@@ -71,7 +71,7 @@ export const NodeWrapper = ({
     <>
       <NodeInner node={node} />
       <Ports>
-        { Object.keys(node.ports).map((portId) => (
+        {Object.keys(node.ports).map((portId) => (
           <PortWrapper
             key={portId}
             offset={offset}
@@ -88,7 +88,7 @@ export const NodeWrapper = ({
             onLinkComplete={onLinkComplete}
             onLinkCancel={onLinkCancel}
           />
-        )) }
+        ))}
       </Ports>
     </>
   )
@@ -98,12 +98,12 @@ export const NodeWrapper = ({
       bounds="parent"
       axis="both"
       position={node.position}
-      grid={[1,1]}
-      onStart={ (e) => {
+      grid={[1, 1]}
+      onStart={(e) => {
         // Stop propagation so the canvas does not move
         e.stopPropagation()
       }}
-      onDrag={(e, dragData) => onDragNode(e, dragData, node.id)}
+      onStop={(e, dragData) => onDragNode(e, dragData, node.id)}
     >
       <Component
         ref={compRef}
