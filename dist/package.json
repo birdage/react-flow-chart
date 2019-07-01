@@ -47,7 +47,7 @@
     "react-dom": "^16.8.4"
   },
   "files": [
-    "dist"
+    "dist/**"
   ],
   "scripts": {
     "start:storybook": "start-storybook -p 6006 -c config/storybook",
