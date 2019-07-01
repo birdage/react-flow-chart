@@ -22,7 +22,11 @@ exports.NodeWrapper = function (_a) {
     var children = (React.createElement(React.Fragment, null,
         React.createElement(NodeInner, { node: node }),
         React.createElement(Ports, null, Object.keys(node.ports).map(function (portId) { return (React.createElement(__1.PortWrapper, { key: portId, offset: offset, selected: selected, selectedLink: selectedLink, hoveredLink: hoveredLink, hovered: hovered, node: node, port: node.ports[portId], Component: Port, onPortPositionChange: onPortPositionChange, onLinkStart: onLinkStart, onLinkMove: onLinkMove, onLinkComplete: onLinkComplete, onLinkCancel: onLinkCancel })); }))));
-    return (React.createElement(react_draggable_1.default, { bounds: "parent", axis: "both", position: node.position, grid: [1, 1], onStart: function (e, dragData) { return onDragStart(e, dragData, node.id); }, onDrag: function (e, dragData) { return onDragNode(e, dragData, node.id); }, onStop: function (e, dragData) { return onDragStop(e, dragData, node.id); } },
+    return (React.createElement(react_draggable_1.default, { bounds: "parent", axis: "both", position: node.position, grid: [1, 1], onStart: function (e, dragData) {
+            // Stop propagation so the canvas does not move
+            e.stopPropagation();
+            onDragStart(e, dragData, node.id);
+        }, onDrag: function (e, dragData) { return onDragNode(e, dragData, node.id); }, onStop: function (e, dragData) { return onDragStop(e, dragData, node.id); } },
         React.createElement(Component, { ref: compRef, children: children, onClick: function (e) {
                 onNodeClick({ nodeId: node.id });
                 e.stopPropagation();

@@ -103,7 +103,11 @@ export const NodeWrapper = ({
       axis="both"
       position={node.position}
       grid={[1, 1]}
-      onStart={(e, dragData) => onDragStart(e, dragData, node.id)}
+      onStart={(e, dragData) => {
+        // Stop propagation so the canvas does not move
+        e.stopPropagation()
+        onDragStart(e, dragData, node.id)
+      }}
       onDrag={(e, dragData) => onDragNode(e, dragData, node.id)}
       onStop={(e, dragData) => onDragStop(e, dragData, node.id)}
     >
