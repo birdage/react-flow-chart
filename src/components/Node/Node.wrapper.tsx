@@ -26,6 +26,8 @@ export interface INodeWrapperProps {
   onLinkComplete: IOnLinkComplete
   onLinkCancel: IOnLinkCancel
   onDragNode: IOnDragNode
+  onDragStart: IOnDragNode
+  onDragStop: IOnDragNode
   onNodeClick: IOnNodeClick
   onNodeSizeChange: IOnNodeSizeChange
 }
@@ -33,6 +35,8 @@ export interface INodeWrapperProps {
 export const NodeWrapper = ({
   node,
   onDragNode,
+  onDragStart,
+  onDragStop,
   onNodeClick,
   isSelected,
   Component = NodeDefault,
@@ -99,11 +103,9 @@ export const NodeWrapper = ({
       axis="both"
       position={node.position}
       grid={[1, 1]}
-      onStart={(e) => {
-        // Stop propagation so the canvas does not move
-        e.stopPropagation()
-      }}
-      onStop={(e, dragData) => onDragNode(e, dragData, node.id)}
+      onStart={(e, dragData) => onDragStart(e, dragData, node.id)}
+      onDrag={(e, dragData) => onDragNode(e, dragData, node.id)}
+      onStop={(e, dragData) => onDragStop(e, dragData, node.id)}
     >
       <Component
         ref={compRef}
@@ -115,6 +117,6 @@ export const NodeWrapper = ({
         isSelected={isSelected}
         node={node}
       />
-    </Draggable>
+    </Draggable >
   )
 }
