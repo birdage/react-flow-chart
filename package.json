@@ -6,6 +6,9 @@
   "repository": "git@github.com:MrBlenny/react-flow-chart.git",
   "author": "David Revay <daverevay@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@storybook/addon-centered": "^5.0.6",
@@ -46,9 +49,6 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
-  "files": [
-    "dist/**"
-  ],
   "scripts": {
     "start:storybook": "start-storybook -p 6006 -c config/storybook",
     "build:storybook": "build-storybook -c config/storybook -o docs",
