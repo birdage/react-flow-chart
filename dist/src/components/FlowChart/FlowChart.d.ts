@@ -2,6 +2,8 @@ import * as React from 'react';
 import { ICanvasInnerDefaultProps, ICanvasOuterDefaultProps, IChart, ILinkDefaultProps, INodeDefaultProps, INodeInnerDefaultProps, IOnCanvasClick, IOnCanvasDrop, IOnDeleteKey, IOnDragCanvas, IOnDragNode, IOnLinkCancel, IOnLinkClick, IOnLinkComplete, IOnLinkMouseEnter, IOnLinkMouseLeave, IOnLinkMove, IOnLinkStart, IOnNodeClick, IOnNodeSizeChange, IOnPortPositionChange, IPortDefaultProps, IPortsDefaultProps } from '../../';
 export interface IFlowChartCallbacks {
     onDragNode: IOnDragNode;
+    onDragStart: IOnDragNode;
+    onDragStop: IOnDragNode;
     onDragCanvas: IOnDragCanvas;
     onCanvasDrop: IOnCanvasDrop;
     onLinkStart: IOnLinkStart;

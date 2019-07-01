@@ -21,6 +21,15 @@ export const onDragNode: IOnDragNode = (event, data, id) => (chart: IChart) => {
       },
     }
   }
+  return chart
+}
+
+export const onDragStart: IOnDragNode = (event, data, id) => (chart: IChart) => {
+
+  return chart
+}
+
+export const onDragStop: IOnDragNode = (event, data, id) => (chart: IChart) => {
 
   return chart
 }

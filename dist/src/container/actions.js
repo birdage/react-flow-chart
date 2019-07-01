@@ -25,6 +25,12 @@ exports.onDragNode = function (event, data, id) { return function (chart) {
     }
     return chart;
 }; };
+exports.onDragStart = function (event, data, id) { return function (chart) {
+    return chart;
+}; };
+exports.onDragStop = function (event, data, id) { return function (chart) {
+    return chart;
+}; };
 exports.onDragCanvas = function (event, data) { return function (chart) {
     chart.offset.x = data.x;
     chart.offset.y = data.y;

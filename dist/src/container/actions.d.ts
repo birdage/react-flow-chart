@@ -3,6 +3,8 @@ import { IOnCanvasClick, IOnCanvasDrop, IOnDeleteKey, IOnDragCanvas, IOnDragNode
  * This file contains actions for updating state after each of the required callbacks
  */
 export declare const onDragNode: IOnDragNode;
+export declare const onDragStart: IOnDragNode;
+export declare const onDragStop: IOnDragNode;
 export declare const onDragCanvas: IOnDragCanvas;
 export declare const onLinkStart: IOnLinkStart;
 export declare const onLinkMove: IOnLinkMove;

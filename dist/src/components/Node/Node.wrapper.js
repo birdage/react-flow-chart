@@ -5,7 +5,7 @@ var react_draggable_1 = require("react-draggable");
 var __1 = require("../../");
 var Node_default_1 = require("./Node.default");
 exports.NodeWrapper = function (_a) {
-    var node = _a.node, onDragNode = _a.onDragNode, onNodeClick = _a.onNodeClick, isSelected = _a.isSelected, _b = _a.Component, Component = _b === void 0 ? Node_default_1.NodeDefault : _b, onNodeSizeChange = _a.onNodeSizeChange, NodeInner = _a.NodeInner, Ports = _a.Ports, Port = _a.Port, offset = _a.offset, selected = _a.selected, selectedLink = _a.selectedLink, hovered = _a.hovered, hoveredLink = _a.hoveredLink, onPortPositionChange = _a.onPortPositionChange, onLinkStart = _a.onLinkStart, onLinkMove = _a.onLinkMove, onLinkComplete = _a.onLinkComplete, onLinkCancel = _a.onLinkCancel;
+    var node = _a.node, onDragNode = _a.onDragNode, onDragStart = _a.onDragStart, onDragStop = _a.onDragStop, onNodeClick = _a.onNodeClick, isSelected = _a.isSelected, _b = _a.Component, Component = _b === void 0 ? Node_default_1.NodeDefault : _b, onNodeSizeChange = _a.onNodeSizeChange, NodeInner = _a.NodeInner, Ports = _a.Ports, Port = _a.Port, offset = _a.offset, selected = _a.selected, selectedLink = _a.selectedLink, hovered = _a.hovered, hoveredLink = _a.hoveredLink, onPortPositionChange = _a.onPortPositionChange, onLinkStart = _a.onLinkStart, onLinkMove = _a.onLinkMove, onLinkComplete = _a.onLinkComplete, onLinkCancel = _a.onLinkCancel;
     var _c = React.useState({ width: 0, height: 0 }), size = _c[0], setSize = _c[1];
     var compRef = React.useRef(null);
     // TODO: probably should add an observer to track node component size changes
@@ -22,10 +22,7 @@ exports.NodeWrapper = function (_a) {
     var children = (React.createElement(React.Fragment, null,
         React.createElement(NodeInner, { node: node }),
         React.createElement(Ports, null, Object.keys(node.ports).map(function (portId) { return (React.createElement(__1.PortWrapper, { key: portId, offset: offset, selected: selected, selectedLink: selectedLink, hoveredLink: hoveredLink, hovered: hovered, node: node, port: node.ports[portId], Component: Port, onPortPositionChange: onPortPositionChange, onLinkStart: onLinkStart, onLinkMove: onLinkMove, onLinkComplete: onLinkComplete, onLinkCancel: onLinkCancel })); }))));
-    return (React.createElement(react_draggable_1.default, { bounds: "parent", axis: "both", position: node.position, grid: [1, 1], onStart: function (e) {
-            // Stop propagation so the canvas does not move
-            e.stopPropagation();
-        }, onStop: function (e, dragData) { return onDragNode(e, dragData, node.id); } },
+    return (React.createElement(react_draggable_1.default, { bounds: "parent", axis: "both", position: node.position, grid: [1, 1], onStart: function (e, dragData) { return onDragStart(e, dragData, node.id); }, onDrag: function (e, dragData) { return onDragNode(e, dragData, node.id); }, onStop: function (e, dragData) { return onDragStop(e, dragData, node.id); } },
         React.createElement(Component, { ref: compRef, children: children, onClick: function (e) {
                 onNodeClick({ nodeId: node.id });
                 e.stopPropagation();

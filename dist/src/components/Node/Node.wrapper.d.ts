@@ -19,7 +19,9 @@ export interface INodeWrapperProps {
     onLinkComplete: IOnLinkComplete;
     onLinkCancel: IOnLinkCancel;
     onDragNode: IOnDragNode;
+    onDragStart: IOnDragNode;
+    onDragStop: IOnDragNode;
     onNodeClick: IOnNodeClick;
     onNodeSizeChange: IOnNodeSizeChange;
 }
-export declare const NodeWrapper: ({ node, onDragNode, onNodeClick, isSelected, Component, onNodeSizeChange, NodeInner, Ports, Port, offset, selected, selectedLink, hovered, hoveredLink, onPortPositionChange, onLinkStart, onLinkMove, onLinkComplete, onLinkCancel, }: INodeWrapperProps) => JSX.Element;
+export declare const NodeWrapper: ({ node, onDragNode, onDragStart, onDragStop, onNodeClick, isSelected, Component, onNodeSizeChange, NodeInner, Ports, Port, offset, selected, selectedLink, hovered, hoveredLink, onPortPositionChange, onLinkStart, onLinkMove, onLinkComplete, onLinkCancel, }: INodeWrapperProps) => JSX.Element;

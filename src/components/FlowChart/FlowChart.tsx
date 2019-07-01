@@ -9,6 +9,8 @@ import {
 
 export interface IFlowChartCallbacks {
   onDragNode: IOnDragNode
+  onDragStart: IOnDragNode
+  onDragStop: IOnDragNode
   onDragCanvas: IOnDragCanvas
   onCanvasDrop: IOnCanvasDrop
   onLinkStart: IOnLinkStart
@@ -52,12 +54,14 @@ export interface IFlowChartProps {
 }
 
 export const FlowChart = (props: IFlowChartProps) => {
-  const [ canvasSize, setCanvasSize ] = React.useState<{ width: number, height: number }>({ width: 0, height: 0 })
+  const [canvasSize, setCanvasSize] = React.useState<{ width: number, height: number }>({ width: 0, height: 0 })
 
   const {
     chart,
     callbacks: {
       onDragNode,
+      onDragStart,
+      onDragStop,
       onDragCanvas,
       onCanvasDrop,
       onLinkStart,
@@ -87,7 +91,7 @@ export const FlowChart = (props: IFlowChartProps) => {
 
   const canvasCallbacks = { onDragCanvas, onCanvasClick, onDeleteKey, onCanvasDrop }
   const linkCallbacks = { onLinkMouseEnter, onLinkMouseLeave, onLinkClick }
-  const nodeCallbacks = { onDragNode, onNodeClick, onNodeSizeChange }
+  const nodeCallbacks = { onDragNode, onDragStart, onDragStop, onNodeClick, onNodeSizeChange }
   const portCallbacks = { onPortPositionChange, onLinkStart, onLinkMove, onLinkComplete, onLinkCancel }
 
   const nodesInView = Object.keys(nodes).filter((nodeId) => {
@@ -120,7 +124,7 @@ export const FlowChart = (props: IFlowChartProps) => {
       onSizeChange={(width, height) => setCanvasSize({ width, height })}
       {...canvasCallbacks}
     >
-      { linksInView.map((linkId) => {
+      {linksInView.map((linkId) => {
         const isSelected = selected.type === 'link' && selected.id === linkId
         const isHovered = hovered.type === 'link' && hovered.id === linkId
         const fromNodeId = links[linkId].from.nodeId
@@ -139,7 +143,7 @@ export const FlowChart = (props: IFlowChartProps) => {
           />
         )
       })}
-      { nodesInView.map((nodeId) => {
+      {nodesInView.map((nodeId) => {
         const isSelected = selected.type === 'node' && selected.id === nodeId
         const selectedLink = getSelectedLinkForNode(selected, nodeId, links)
         const hoveredLink = getSelectedLinkForNode(hovered, nodeId, links)
@@ -163,7 +167,7 @@ export const FlowChart = (props: IFlowChartProps) => {
           />
         )
       })
-    }
+      }
     </CanvasWrapper>
   )
 }

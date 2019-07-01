@@ -2,7 +2,7 @@
   "name": "@mrblenny/react-flow-chart",
   "version": "0.0.6",
   "description": "A flexible, stateless flow chart library for react.",
-  "main": "src/index.js",
+  "main": "dist/src/index.js",
   "repository": "git@github.com:MrBlenny/react-flow-chart.git",
   "author": "David Revay <daverevay@gmail.com>",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "react-draggable": "^3.0.5",
+    "react-draggable": "^3.3.0",
     "styled-components": "^4.0.3",
     "uuid": "^3.3.2"
   },
@@ -46,6 +46,9 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start:storybook": "start-storybook -p 6006 -c config/storybook",
     "build:storybook": "build-storybook -c config/storybook -o docs",
