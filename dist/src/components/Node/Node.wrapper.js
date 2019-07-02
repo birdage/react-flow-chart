@@ -28,8 +28,8 @@ exports.NodeWrapper = function (_a) {
             onDragStart(e, dragData, node.id);
         }, onDrag: function (e, dragData) { return onDragNode(e, dragData, node.id); }, onStop: function (e, dragData) { return onDragStop(e, dragData, node.id); } },
         React.createElement(Component, { ref: compRef, children: children, onClick: function (e) {
-                onNodeClick({ nodeId: node.id });
                 e.stopPropagation();
+                onNodeClick({ nodeId: node.id });
             }, isSelected: isSelected, node: node })));
 };
 //# sourceMappingURL=Node.wrapper.js.map
